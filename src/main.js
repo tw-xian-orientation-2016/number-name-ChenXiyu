@@ -60,7 +60,7 @@ function spell3Digits(n){
     var decade = spellDecade(tail , dic);
     if(n.length == 3){
         head = n.substr(-3,1);
-        if(decade != " "){
+        if(decade != ""){
             return dic[head] + " hundred and " + decade
         }else{
             return dic[head] + " hundred"
@@ -76,7 +76,11 @@ function spellDecade( n , dic){
     }else{
         var unit = Number(n)%10 + "";
         var decade = (Number(n) - Number(n)%10) + "";
-        return dic[decade] + " " + dic[unit];
+        if ( Number(decade) == 0){
+            return dic[unit];
+        }else{
+            return dic[decade] + " " + dic[unit];
+        }
     }
 }
 

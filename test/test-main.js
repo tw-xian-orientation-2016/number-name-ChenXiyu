@@ -104,10 +104,8 @@ describe('main',function(){
     });
     it('transform 1501 to one thousand,five hundred and one ',function(){
         var input = "1501"
-        var expectOutput = 'one thousand,five hundred and  one '
+        var expectOutput = 'one thousand,five hundred and one '
         var output = main(input);
-        //document.write(output + "<br/>")
-        //document.write(expectOutput + "<br/>")
         expect(expectOutput).toEqual(output)
     });
 });
