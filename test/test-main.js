@@ -102,9 +102,9 @@ describe('main',function(){
         var output = main(input);
         expect(expectOutput).toEqual(output)
     });
-    it('transform 1501 to one thousand,five hundred and one ',function(){
-        var input = "1501"
-        var expectOutput = 'one thousand,five hundred and one '
+    it('transform 1001000 to one million and one thousand ',function(){
+        var input = "1001000"
+        var expectOutput = 'one million and one thousand'
         var output = main(input);
         expect(expectOutput).toEqual(output)
     });

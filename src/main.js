@@ -55,13 +55,17 @@ function spell3Digits(n){
         '80':'eighty',
         '90':'ninety'
     };
+    n = Number(n)+"";
+
     var tail , head;
     tail = n.substr(-2,2);
     var decade = spellDecade(tail , dic);
     if(n.length == 3){
         head = n.substr(-3,1);
         if(decade != ""){
-            return dic[head] + " hundred and " + decade
+            if(dic[head] != ''){
+                return dic[head] + " hundred and " + decade
+            }
         }else{
             return dic[head] + " hundred"
         }
@@ -89,17 +93,19 @@ function splice(spelledPart){
     var dic= ['trillion','billion','million','thousand',''];
     var dicLength = dic.length;
     for(var i = spelledPart.length - 1 , j = dic.length -1 ; i >= 0 && j >= 0 ;i-- , j--){
-        if(spelledPart[i].indexOf("and") != -1){
-            if(i > 0){
-                result = ","+spelledPart[i] + " " + dic[j] + result;
+        if(spelledPart[i] != ''){
+            if(spelledPart[i].indexOf(" and") != -1 ){
+                if(i > 0){
+                    result = ","+spelledPart[i] + " " + dic[j] + result;
+                }else{
+                    result = spelledPart[i] + " " +dic[j] + result;
+                }
             }else{
-                result = spelledPart[i] + " " +dic[j] + result;
-            }
-        }else{
-            if(i > 0){
-                result = " and " + spelledPart[i] + " " +dic[j] + result;
-            }else{
-                result = spelledPart[i] + " " +dic[j] + result;
+                if(i > 0){
+                    result = " and " + spelledPart[i] + " " +dic[j] + result;
+                }else{
+                    result = spelledPart[i] + " " +dic[j] + result;
+                }
             }
         }
     }
